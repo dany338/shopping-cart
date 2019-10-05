@@ -2,16 +2,16 @@ import React  from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Card } from './styled'
+import { styledButton } from './styled'
 
-const Footer = (props) => {
+const Button = (props) => {
   return (
-    <Card>
-    </Card>
+    <styledButton>
+    </styledButton>
   )
 }
 
-Footer.propTypes = {
+Button.propTypes = {
 }
 
 const mapStateToProps = state => {
@@ -25,4 +25,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(Footer))
+)(withRouter(Button))

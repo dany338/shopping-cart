@@ -4,14 +4,14 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Card } from './styled'
 
-const Footer = (props) => {
+const FiltersMy = (props) => {
   return (
     <Card>
     </Card>
   )
 }
 
-Footer.propTypes = {
+FiltersMy.propTypes = {
 }
 
 const mapStateToProps = state => {
@@ -25,4 +25,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(Footer))
+)(withRouter(FiltersMy))

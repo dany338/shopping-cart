@@ -4,7 +4,7 @@ import { Provider } from 'react-redux'
 import { createGlobalStyle } from 'styled-components'
 
 // Include Pages in the router
-import Home from '../../pages/Home'
+import My from '../../pages/My'
 
 // Call store
 import store from '../../store'
@@ -23,7 +23,7 @@ class App extends Component {
           <GlobalStyle />
           <div className="container">
             <Switch>
-              <Route path="/" exact component={Home} />
+              <Route path="/" exact component={My} />
             </Switch>
           </div>
         </Router>

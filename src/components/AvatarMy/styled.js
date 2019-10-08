@@ -4,10 +4,10 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-direction: row;
+  flex-direction: column;
   color: white;
 
-  .my-title {
+  .avatar-name {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -16,9 +16,5 @@ export const Container = styled.div`
       margin-right: 18px;
       cursor: pointer;
     }
-  }
-
-  .my-color-icon {
-    color: #c3c3c3;
   }
 `

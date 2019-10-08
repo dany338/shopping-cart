@@ -7,18 +7,21 @@ export const Container = styled.div`
   flex-direction: row;
   color: white;
 
-  .my-title {
+  .category-name {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
 
     h3 {
       margin-right: 18px;
       cursor: pointer;
+      color: white;
     }
-  }
 
-  .my-color-icon {
-    color: #c3c3c3;
+    h4 {
+      margin-right: 18px;
+      cursor: pointer;
+      color: #c3c3c3;
+    }
   }
 `

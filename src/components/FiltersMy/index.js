@@ -1,17 +1,48 @@
-import React  from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { Card } from './styled'
 
-const FiltersMy = (props) => {
+/* Dispatchers */
+import { setFiltersQueryRequest } from '../dispatchers'
+
+/* Components */
+import Link from '../Link'
+
+/* Style Components */
+import { Container } from './styled'
+
+const filters = [{ text: 'Bought' }, { text: 'Pending' }, { text: 'Unpaid' }]
+
+const FiltersMy = ({ setFilterQuery }) => {
+  const [activeButton, setActiveButton] = useState(filters[0].text)
+
+  const handleButtonClick = buttonName => {
+    setActiveButton(buttonName)
+    setFilterQuery('query', buttonName)
+  }
+
   return (
-    <Card>
-    </Card>
+    <Container>
+      <div>
+        <div className="sort-by">
+          {filters.map(filter => (
+            <Link
+              key={filter.text}
+              active={activeButton === filter.text}
+              onClick={() => handleButtonClick(filter.text)}
+            >
+              {filter.text}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </Container>
   )
 }
 
 FiltersMy.propTypes = {
+  setFilterQuery: PropTypes.func.isRequired,
 }
 
 const mapStateToProps = state => {
@@ -19,7 +50,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-  return null
+  return {
+    setFilterQuery: (name, value) => dispatch(setFiltersQueryRequest(name, value)),
+  }
 }
 
 export default connect(

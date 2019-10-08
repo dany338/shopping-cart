@@ -3,30 +3,32 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-/* Components */
-import HeaderMy from '../HeaderMy'
-import FooterMy from '../AvatarMy'
-import AvatarMy from '../FooterMy'
-
 /* Style Components */
 import { Card } from './styled'
 
-const MyInformation = ({ myInformation }) => {
+/* Assets */
+import assets from '../../assets'
+
+const AvatarMy = ({ name }) => {
   return (
     <Card>
-      <HeaderMy title={'My Information'} />
-      <AvatarMy />
-      <FooterMy />
+      <div>
+        <img src={assets.avatarMale} alt={'My Avatar'} />
+      </div>
+      <div className="avatar-name">
+        <h3>{name}</h3>
+      </div>
     </Card>
   )
 }
 
-MyInformation.propTypes = {
+AvatarMy.propTypes = {
+  name: PropTypes.string.isRequired,
 }
 
 const mapStateToProps = state => {
   return {
-    myInformation: state.personalsReducer.data,
+    name: state.personalsReducer.data.fullname,
   }
 }
 
@@ -37,4 +39,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(MyInformation))
+)(withRouter(AvatarMy))

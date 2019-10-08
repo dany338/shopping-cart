@@ -7,7 +7,8 @@ import { getMyInformationRequest } from '../dispatchers'
 /* Components */
 import MyInformation from '../components/MyInformation'
 import FiltersMy from '../components/FiltersMy'
-import ProductMy from '../components/ProductMy'
+import ProductItems from '../components/ProductItems'
+import FooterMy from '../components/FooterMy'
 
 /* Style Components */
 import { Container } from './styled'
@@ -33,24 +34,8 @@ class My extends Component {
       <Container>
         <MyInformation />
         <FiltersMy />
-        <section className="section">
-          <div className="container">
-            <div className="columns is-multiline">
-              {loading ? (
-                Array.from({ length: myInformation.bought.length }, (_, index) => (
-                  <div className="column is-3 is-one-quarter" key={index}>
-                    <Skeleton width={237} height={250} />
-                  </div>
-                ))
-              ) : (
-                myInformation.bought.length > 0 &&
-                myInformation.bought.map(product => (
-                    <ProductMy  {...product} key={product.id}/>
-                  ))
-              )}
-            </div>
-          </div>
-        </section>
+        <ProductItems />
+        <FooterMy />
       </Container>
     )
   }

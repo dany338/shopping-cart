@@ -6,7 +6,7 @@ import { Container } from './styled'
 
 const ProductMy = ({ _id, type, title, description, image, cost }) => {
   return (
-    <Container onClick={() => null}>
+    <Container onClick={() => console.log(_id)}>
       <img src={image} alt={title} />
       <div className="product-info">
         <p>{type}</p>

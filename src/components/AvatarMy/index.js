@@ -4,21 +4,21 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 /* Style Components */
-import { Card } from './styled'
+import { Container } from './styled'
 
 /* Assets */
 import assets from '../../assets'
 
 const AvatarMy = ({ name }) => {
   return (
-    <Card>
+    <Container>
       <div>
         <img src={assets.avatarMale} alt={'My Avatar'} />
       </div>
       <div className="avatar-name">
         <h3>{name}</h3>
       </div>
-    </Card>
+    </Container>
   )
 }
 
@@ -26,17 +26,11 @@ AvatarMy.propTypes = {
   name: PropTypes.string.isRequired,
 }
 
-const mapStateToProps = state => {
-  return {
-    name: state.personalsReducer.data.fullname,
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return null
-}
+const mapStateToProps = state => ({
+  name: state.personalsReducer.data.fullname,
+})
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(withRouter(AvatarMy))

@@ -19,7 +19,7 @@ let apiHeaders = {
 
 export const apiPersonal = {
   getMyInformation: async () => {
-    const response = await fetch(assets.personalJson, fetchParams('GET'))
+    const response = await fetch('personals.json', fetchParams('GET'))
     const data = await response.json()
     return data
   }

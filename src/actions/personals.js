@@ -1,4 +1,4 @@
-import * as PersonalTypes from '../typesActions';
+import * as PersonalTypes from '../typeActions';
 
 export const fetchMyInformationRequest = () => {
   return {

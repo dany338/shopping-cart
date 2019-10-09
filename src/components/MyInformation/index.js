@@ -1,4 +1,4 @@
-import React  from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
@@ -11,7 +11,7 @@ import AvatarMy from '../FooterMy'
 /* Style Components */
 import { Card } from './styled'
 
-const MyInformation = ({ myInformation }) => {
+const MyInformation = () => {
   return (
     <Card>
       <HeaderMy title={'My Information'} />
@@ -24,17 +24,7 @@ const MyInformation = ({ myInformation }) => {
 MyInformation.propTypes = {
 }
 
-const mapStateToProps = state => {
-  return {
-    myInformation: state.personalsReducer.data,
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return null
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  null,
+  null
 )(withRouter(MyInformation))

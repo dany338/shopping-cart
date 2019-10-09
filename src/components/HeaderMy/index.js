@@ -28,15 +28,7 @@ HeaderMy.propTypes = {
   title: PropTypes.string.isRequired,
 }
 
-const mapStateToProps = state => {
-  return null
-}
-
-const mapDispatchToProps = dispatch => {
-  return null
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  null,
+  null
 )(withRouter(HeaderMy))

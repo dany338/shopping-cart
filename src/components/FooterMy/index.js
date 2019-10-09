@@ -16,7 +16,6 @@ const FooterMy = (props) => {
 
   const handleButtonClick = buttonName => {
     setActiveButton(buttonName)
-    setFilterQuery('query', buttonName)
   }
 
   return (
@@ -41,15 +40,7 @@ const FooterMy = (props) => {
 FooterMy.propTypes = {
 }
 
-const mapStateToProps = state => {
-  return null
-}
-
-const mapDispatchToProps = dispatch => {
-  return null
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  null,
+  null
 )(withRouter(FooterMy))

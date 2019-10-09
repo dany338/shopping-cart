@@ -3,8 +3,8 @@ import filtersMyReducer from './filtersMy'
 import { combineReducers } from 'redux'
 
 const allReducers = combineReducers({
-  personalsReducer,
-  filtersMyReducer
+  personalsReducer: personalsReducer,
+  filtersMyReducer: filtersMyReducer,
 })
 
 export default allReducers

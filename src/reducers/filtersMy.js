@@ -1,8 +1,8 @@
-import * as filtersMyTypes from '../typesActions';
+import * as filtersMyTypes from '../typeActions';
 
 const INITIAL_STATE = {
   filter: {
-    query: ''
+    query: 'Bought'
   }
 }
 
@@ -13,8 +13,8 @@ const filtersMyReducer = (state = INITIAL_STATE, { type, payload }) => {
 
       return {
         ...state,
-        filters: {
-          ...state.filters,
+        filter: {
+          ...state.filter,
           [name]: value
         },
       }

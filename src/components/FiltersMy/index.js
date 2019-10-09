@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 /* Dispatchers */
-import { setFiltersQueryRequest } from '../dispatchers'
+import { setFiltersQueryRequest, getMyInformationRequest } from '../../dispatchers'
 
 /* Components */
 import Link from '../Link'
@@ -45,17 +45,11 @@ FiltersMy.propTypes = {
   setFilterQuery: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => {
-  return null
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setFilterQuery: (name, value) => dispatch(setFiltersQueryRequest(name, value)),
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  setFilterQuery: (name, value) => dispatch(setFiltersQueryRequest(name, value)),
+})
 
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(withRouter(FiltersMy))

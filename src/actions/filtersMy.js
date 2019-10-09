@@ -1,4 +1,4 @@
-import * as filtersMyTypes from '../typesActions';
+import * as filtersMyTypes from '../typeActions';
 
 export const setSelectedFilter = (name, value) => {
   return {

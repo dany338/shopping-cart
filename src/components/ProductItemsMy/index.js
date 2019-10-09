@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import Skeleton from 'react-loading-skeleton'
 
 /* Dispatchers */
-import { getMyInformationRequest } from '../dispatchers'
+import { getMyInformationRequest, setFiltersQueryRequest } from '../../dispatchers'
 
 /* Components */
 import ProductMy from '../ProductMy'
@@ -13,7 +13,8 @@ import ProductMy from '../ProductMy'
 /* Style Components */
 import { Container } from './styled'
 
-const ProductItems = ({ productsBought, productsPending, productsUnpaid, loading, error, query, onGetMyInformation }) => {
+const ProductItemsMy = ({ productsBought, productsPending, productsUnpaid, loading, error, query, getMyInformation, setFilterQuery }) => {
+  console.log('productsBought', productsBought, loading)
   const [isHidden, setIsHidden] = useState('')
 
   const handleLinkClose = () => {
@@ -21,8 +22,8 @@ const ProductItems = ({ productsBought, productsPending, productsUnpaid, loading
   }
 
   useEffect(() => {
-    onGetMyInformation()
-  }, [onGetMyInformation])
+    getMyInformation()
+  }, [getMyInformation])
 
   return (
     <Container>
@@ -57,55 +58,59 @@ const ProductItems = ({ productsBought, productsPending, productsUnpaid, loading
   )
 }
 
-ProductItems.propTypes = {
-  productsBought: PropTypes.shape({
-    _id: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    cost: PropTypes.number.isRequired,
-  }),
-  productsPending: PropTypes.shape({
-    _id: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    cost: PropTypes.number.isRequired,
-  }),
-  productsUnpaid: PropTypes.shape({
-    _id: PropTypes.number.isRequired,
-    type: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    cost: PropTypes.number.isRequired,
-  }),
-  children: PropTypes.string.isRequired,
+ProductItemsMy.propTypes = {
+  productsBought: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      cost: PropTypes.number.isRequired,
+    })
+  ),
+  productsPending:
+    PropTypes.arrayOf(
+      PropTypes.shape({
+      _id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      cost: PropTypes.number.isRequired,
+    })
+  ),
+  productsUnpaid: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.number.isRequired,
+      type: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      image: PropTypes.string.isRequired,
+      cost: PropTypes.number.isRequired,
+    })
+  ),
   loading: PropTypes.oneOf([true, false]).isRequired,
   error: PropTypes.oneOf([true, false]).isRequired,
-  onGetMyInformation: PropTypes.func.isRequired,
+  query: PropTypes.string.isRequired,
+  getMyInformation: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => {
-  return {
-    query: state.filtersMyReducer.filter.quey,
-    productsBought: state.personalsReducer.data.bought,
-    productsPending: state.personalsReducer.data.pending,
-    productsUnpaid: state.personalsReducer.data.unpaid,
-    loading: state.personalsReducer.loading,
-    error: state.personalsReducer.error,
-  }
-}
+const mapStateToProps = state => ({
+  query: state.filtersMyReducer.filter.query,
+  productsBought: state.personalsReducer.data.bought,
+  productsPending: state.personalsReducer.data.pending,
+  productsUnpaid: state.personalsReducer.data.unpaid,
+  loading: state.personalsReducer.loading,
+  error: state.personalsReducer.error,
+})
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onGetMyInformation: () => dispatch(getMyInformationRequest()),
-  }
-}
+const mapDispatchToProps = dispatch => ({
+  getMyInformation: () => dispatch(getMyInformationRequest()),
+  setFilterQuery: (name, value) => dispatch(setFiltersQueryRequest(name, value)),
+})
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(ProductItems))
+)(withRouter(ProductItemsMy))

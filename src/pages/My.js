@@ -34,7 +34,7 @@ class My extends Component {
   render() {
     return (
       <Container>
-        {/* <MyInformation /> */}
+        <MyInformation />
         <FiltersMy />
         <ProductItemsMy />
         <FooterMy />
